@@ -40,13 +40,13 @@
     $(document).ready(function(){
         $("btn1").click(function(){
             $.ajaxSetup({url:"test.txt",
-            success: function(result){
-                $("#result").html(result);
-            }
+                success: function(result){
+                    $("#result").html(result);
+                }
+            });
+            $.ajax();
+            });
         });
-        $.ajax();
-    });
-});
     </script>
 </body>
 </html>
