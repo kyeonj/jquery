@@ -17,18 +17,24 @@
     var arr1 = ["kim", "lee", "park", "joeng", "han"];
     var arr2 = ["kang", "choi", "oh", "nam"]
     $(function(){
+        //아이디가 btn1인 요소를 클릭하면,
+        //1) 위 arr1과 arr2 배열 요소를 합치기 하여 #res1에 출력
         $("#btn1").click(function(){
             var mg = $.merge(arr1, arr2);
             $("#res1").text(mg.join(", "));
         });
+        //아이디가 btn2인 요소를 클릭하면,
+        //2) 아래 아이디가 lst1인 요소의 자식 요소와 lst2인 요소를 합치기 하여 비순서형 목록 형태로 아이디가 res2인 곳에 출력
         $("#btn2").click(function(){
-            
+            $("#res2").append("<ul id='merge_data'></ul>");
+            var ar1 = $("#lst1 li").clone();
+            var ar2 = $("#lst2 li").clone();
+            var mg = $.merge(ar1, ar2);
+            $.each(mg, function(index){
+                $("#merge_data").append(mg[index]);
+            });
         });
     });
-    //아이디가 btn1인 요소를 클릭하면,
-    //1) 위 arr1과 arr2 배열 요소를 합치기 하여 #res1에 출력
-    //아이디가 btn2인 요소를 클릭하면,
-    //2) 아래 아이디가 lst1인 요소의 자식 요소와 lst2인 요소를 합치기 하여 비순서형 목록 형태로 아이디가 res2인 곳에 출력
     </script>
 </head>
 <body>

@@ -13,19 +13,19 @@
     .data:after { content:""; display:block; clear:both; } 
     </style>
     <script>
+    //아이디가 btn1인 요소를 클릭하면,
+    //1) 아이디가 res1인 곳의 첫 span 요소에 "취업"을 마지막 span 요소에 숫자 100을 객체로 만들어 데이터를 바인딩시키시오. 
     $(function(){
         $("#btn1").click(function(){
-            var div = $("#res1"); //아이디 기억
-            $.data(div, "study", {  // study로 묶임.
+            var div = $("#res1");
+            $.data(div, "study", {
                 first:"취업",
                 last:100
             });
-            $("span").first().text($.data(div, "study").first); // span 첫번째에 study에 들어있는 first추가
-            $("span").last().text($.data(div, "study").last); //span 마지막에 study에 들어있는 last추가함
+            $("span").first().text($.data(div, "study").first);
+            $("span").last().text($.data(div, "study").last);
         });
     });
-    //아이디가 btn1인 요소를 클릭하면,
-    //1) 아이디가 res1인 곳의 첫 span 요소에 "취업"을 마지막 span 요소에 숫자 100을 객체로 만들어 데이터를 바인딩시키시오. 
     </script>
 </head>
 <body>

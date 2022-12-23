@@ -14,37 +14,42 @@
     
     </style>
     <script>
-    var arr = [ 1, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1 ];
-    $(document).ready(function(){
+    $(function(){   
+        var arr = [ 1, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1 ];
+        //아이디가 btn1인 요소를 클릭하면,
+        //1) 위 arr 배열의 요소의 데이터를 #res1에 출력
+        //2) 위 arr 배열에서 3의 배수가 이고, 2의 배수가 아닌 데이터를 필터링하여 #res2의 자식 요소 li의 텍스트로 각 요소를 출력하시오.
+        //3) 위 arr 배열에서 3의 배수가 아닌 데이터를 res3에 출력
         $("#btn1").click(function(){
-            $("#res1").text(arr.join(","));
+            $("#res1").text(arr.join(", "));             //1. 요소 출력
+            //2-1. 3의  배수이면서, 2의 배수가 아닌 요소를 필터링
             arr1 = jQuery.grep(arr, function(v, i){
                 return (v%3==0 && v%2!=0);
             });
-            for(var i=0;i<arr1.length;i++){
+            for(var i=0;i<arr1.length;i++){ //2-2. 필터링된 요소 출력
                 $("#res2").append("<li>"+arr1[i]+"</li>");
             }
-            arr2 = jQuery.grep(arr, function(v, i){
+            arr2 = jQuery.grep(arr, function(v, i){ //3-1. 3의 배수가 아닌 데이터 필터링
                 return v%3!=0;
             });
             var txt = "";
-            for(var i=0;i<arr2.length;i++){
+            for(var i=0;i<arr2.length;i++){   //3-2. 필터링된 요소 텍스트로 출력
                 txt+=arr2[i] + ", ";
             }
             $("#res3").text(txt);
         });
-    });
-        $("#btn2").click(function(){
-            var lst = $("#lst1 li[qr='bind'], #lst2 li[qr='bind']");
-            var res =$.grep(lst, function(v, i){
-                $("#res4").append(v);
-            });
-        });
-    //아이디가 btn1인 요소를 클릭하면,
-    //1) 위 arr 배열의 요소의 데이터를 #res1에 출력
-    //2) 위 arr 배열에서 3의 배수가 이고, 2의 배수가 아닌 데이터를 필터링하여 #res2의 자식 요소 li의 텍스트로 각 요소를 출력하시오.
-    //3) 위 arr 배열에서 3의 배수가 아닌 데이터를 res3에 출력
+
     //아이디가 btn2인 요소를 클릭하면, #lst1, #lst2의 자식 요소의 qr 속성이 bind인 요소만 필터링하여 #res4의 목록으로 구성하시오.
+        $("#btn2").click(function(){
+            var lst = $("#lst1 li, #lst2 li");
+            var res = $.grep(lst, function(v, i){
+                return ($(v).attr("qr")=="bind");
+            });
+            for(var i=0;i<res.length;i++){
+                $("#res4").append(res[i]);
+            }
+        });
+    });
     </script>
 </head>
 <body>
